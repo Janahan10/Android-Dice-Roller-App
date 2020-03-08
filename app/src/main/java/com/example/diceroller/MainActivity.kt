@@ -10,17 +10,19 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    // lateinit keyword: promises that the variable will not be left as null and will given a value
+    lateinit var diceImage: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) // sets up layout for app
 
         val rollButton: Button = findViewById(R.id.roll_button) // gets the button by id
         rollButton.setOnClickListener{
-
             // calls the function to roll dice on button click
             rollDice()
-
         }
+        diceImage = findViewById(R.id.dice_image)
     }
 
     private fun rollDice() {
@@ -38,8 +40,6 @@ class MainActivity : AppCompatActivity() {
             6 -> R.drawable.dice_6
             else -> R.drawable.dice_1
         }
-        // gets the image view to display the dice image on screen
-        val diceImage: ImageView = findViewById(R.id.dice_image)
 
         // sets image onto the image view element
         diceImage.setImageResource(drawableResource)
